@@ -1,0 +1,249 @@
+SQL> SELECT * FROM employee;
+SELECT * FROM employee
+               
+
+
+SQL> SELECT * FROM deposit;
+
+ACTNO CNAME           BNAME               AMOUNT ADATE                          
+----- --------------- --------------- ---------- ---------                      
+100   ANIL            VRCE                  1000 01-MAR-95                      
+101   SUNIL           AJNI                  5000 04-JAN-96                      
+102   MEHUL           KAROLBAGH             3500 17-NOV-95                      
+104   MADHURI         CHANDI                1200 17-DEC-95                      
+105   PRMOD           M G ROAD              3000 27-MAR-96                      
+106   SANDIP          ANDHERI               2000 31-MAR-96                      
+107   SHIVANI         VIRAR                 1000 05-SEP-95                      
+108   KRANTI          NEHRU PLACE           5000 02-JUL-95                      
+109   MINU            POWAI                 7000 10-AUG-95                      
+
+9 rows selected.
+
+SQL> CREATE TABLE employee (
+  2      empno INT PRIMARY KEY,
+  3      ename VARCHAR(20),
+  4      job_id VARCHAR(10),
+  5      sal INT,
+  6      deptno INT
+  7  );
+
+Table created.
+
+SQL> CREATE TABLE jobs (
+  2      job_id VARCHAR(10) PRIMARY KEY,
+  3      job_title VARCHAR(20),
+  4      min_salary INT,
+  5      max_salary INT
+  6  );
+
+Table created.
+
+SQL> CREATE TABLE deposit (
+  2      account_no INT PRIMARY KEY,
+  3      customer_name VARCHAR(20),
+  4      amount INT,
+  5      open_date DATE
+  6  );
+CREATE TABLE deposit (
+             *
+
+
+SQL> INSERT INTO employee VALUES (101, 'Anita', 'J1', 5000, 10);
+
+1 row created.
+
+SQL> INSERT INTO employee VALUES (102, 'Aman', 'J2', 4500, 20);
+
+1 row created.
+
+SQL> INSERT INTO employee VALUES (103, 'Rakesh', 'J3', 3000, 30);
+
+1 row created.
+
+SQL> INSERT INTO employee VALUES (104, 'Ankit', 'J1', 5500, 20);
+
+1 row created.
+
+SQL> INSERT INTO employee VALUES (105, 'Sunil', 'J2', 4000, 10);
+
+1 row created.
+
+SQL> INSERT INTO employee VALUES (106, 'Aarti', 'J3', 3500, 20);
+
+1 row created.
+
+SQL> INSERT INTO employee VALUES (107, 'Raj', 'J1', 6000, 30);
+
+1 row created.
+
+SQL> INSERT INTO employee VALUES (108, 'Anish', 'J2', 4800, 10);
+
+1 row created.
+
+SQL> INSERT INTO jobs VALUES ('J1', 'Manager', 5000, 10000);
+
+1 row created.
+
+SQL> INSERT INTO jobs VALUES ('J2', 'Clerk', 3000, 6000);
+
+1 row created.
+
+SQL> INSERT INTO jobs VALUES ('J3', 'Salesman', 2000, 5000);
+
+1 row created.
+
+SQL> INSERT INTO jobs VALUES ('J4', 'Analyst', 4500, 9000);
+
+1 row created.
+
+SQL> INSERT INTO deposit VALUES (201, 'Anita', 10000, '2006-01-15');
+INSERT INTO deposit VALUES (201, 'Anita', 10000, '2006-01-15')
+            *
+
+SQL> INSERT INTO deposit VALUES (202, 'Aman', 15000, '2006-03-20');
+INSERT INTO deposit VALUES (202, 'Aman', 15000, '2006-03-20')
+            *
+
+SQL> INSERT INTO deposit VALUES (203, 'Rakesh', 8000, '2005-12-10');
+INSERT INTO deposit VALUES (203, 'Rakesh', 8000, '2005-12-10')
+            * 
+
+
+SQL> INSERT INTO deposit VALUES (204, 'Ankit', 20000, '2006-07-10');
+INSERT INTO deposit VALUES (204, 'Ankit', 20000, '2006-07-10')
+            *
+
+
+SQL> INSERT INTO deposit VALUES (205, 'Sunil', 12000, '2006-08-05');
+INSERT INTO deposit VALUES (205, 'Sunil', 12000, '2006-08-05')
+            * 
+
+
+SQL> INSERT INTO deposit VALUES (206, 'Aarti', 9000, '2006-02-25');
+INSERT INTO deposit VALUES (206, 'Aarti', 9000, '2006-02-25')
+            *
+
+
+SQL> INSERT INTO deposit VALUES (207, 'Raj', 17000, '2006-06-18');
+INSERT INTO deposit VALUES (207, 'Raj', 17000, '2006-06-18')
+            *
+
+
+SQL> INSERT INTO deposit VALUES (208, 'Anish', 11000, '2006-04-30');
+INSERT INTO deposit VALUES (208, 'Anish', 11000, '2006-04-30')
+            *
+
+
+SQL> 
+SQL> SELECT * FROM employee;
+
+     EMPNO ENAME                JOB_ID            SAL     DEPTNO                
+---------- -------------------- ---------- ---------- ----------                
+       101 Anita                J1               5000         10                
+       102 Aman                 J2               4500         20                
+       103 Rakesh               J3               3000         30                
+       104 Ankit                J1               5500         20                
+       105 Sunil                J2               4000         10                
+       106 Aarti                J3               3500         20                
+       107 Raj                  J1               6000         30                
+       108 Anish                J2               4800         10                
+
+8 rows selected.
+
+SQL> SELECT * FROM jobs;
+
+JOB_ID     JOB_TITLE            MIN_SALARY MAX_SALARY                           
+---------- -------------------- ---------- ----------                           
+J1         Manager                    5000      10000                           
+J2         Clerk                      3000       6000                           
+J3         Salesman                   2000       5000                           
+J4         Analyst                    4500       9000                           
+
+SQL> SELECT * FROM deposit;
+
+ACTNO CNAME           BNAME               AMOUNT ADATE                          
+----- --------------- --------------- ---------- ---------                      
+100   ANIL            VRCE                  1000 01-MAR-95                      
+101   SUNIL           AJNI                  5000 04-JAN-96                      
+102   MEHUL           KAROLBAGH             3500 17-NOV-95                      
+104   MADHURI         CHANDI                1200 17-DEC-95                      
+105   PRMOD           M G ROAD              3000 27-MAR-96                      
+106   SANDIP          ANDHERI               2000 31-MAR-96                      
+107   SHIVANI         VIRAR                 1000 05-SEP-95                      
+108   KRANTI          NEHRU PLACE           5000 02-JUL-95                      
+109   MINU            POWAI                 7000 10-AUG-95                      
+
+9 rows selected.
+
+SQL> SELECT account_no, amount
+  2  FROM deposit
+  3  WHERE open_date BETWEEN '2006-01-01' AND '2006-07-25';
+WHERE open_date BETWEEN '2006-01-01' AND '2006-07-25'
+      *
+
+
+SQL> SELECT *
+  2  FROM jobs
+  3  WHERE min_salary > 4000;
+
+JOB_ID     JOB_TITLE            MIN_SALARY MAX_SALARY                           
+---------- -------------------- ---------- ----------                           
+J1         Manager                    5000      10000                           
+J4         Analyst                    4500       9000                           
+
+SQL> SELECT empno, ename, deptno
+  2  FROM employee
+  3  WHERE deptno IN (10, 20);
+
+     EMPNO ENAME                    DEPTNO                                      
+---------- -------------------- ----------                                      
+       101 Anita                        10                                      
+       102 Aman                         20                                      
+       104 Ankit                        20                                      
+       105 Sunil                        10                                      
+       106 Aarti                        20                                      
+       108 Anish                        10                                      
+
+6 rows selected.
+
+SQL> SELECT *
+  2  FROM employee
+  3  WHERE ename LIKE 'A%';
+
+     EMPNO ENAME                JOB_ID            SAL     DEPTNO                
+---------- -------------------- ---------- ---------- ----------                
+       101 Anita                J1               5000         10                
+       102 Aman                 J2               4500         20                
+       104 Ankit                J1               5500         20                
+       106 Aarti                J3               3500         20                
+       108 Anish                J2               4800         10                
+
+SQL> SELECT *
+  2  FROM employee
+  3  WHERE ename LIKE '__a%';
+
+     EMPNO ENAME                JOB_ID            SAL     DEPTNO                
+---------- -------------------- ---------- ---------- ----------                
+       102 Aman                 J2               4500         20                
+
+SQL> SELECT ename, empno, sal
+  2  FROM employee
+  3  WHERE ename LIKE 'Ani__';
+
+ENAME                     EMPNO        SAL                                      
+-------------------- ---------- ----------                                      
+Anita                       101       5000                                      
+Anish                       108       4800                                      
+
+SQL> SELECT customer_name
+  2  FROM deposit
+  3  ORDER BY customer_name;
+SELECT customer_name
+       *
+
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off;
