@@ -1,0 +1,197 @@
+1. ITEM_MASTER
+
+-- Table Creation
+CREATE TABLE item_master (
+    ID VARCHAR(10) PRIMARY KEY,
+    NAME VARCHAR(50),
+    TYPE VARCHAR(30),
+    PRICE INT,
+    QUALITY VARCHAR(20),
+    ITEM_PACK_DATE DATE
+);
+
+-- Insert Values
+INSERT INTO item_master VALUES ('I1', 'Dairymilk', 'Chocolate', 500, 'Good', '2000-08-12');
+INSERT INTO item_master VALUES ('I2', 'Kajukatli', 'Mithai', 1000, 'Verygood', '2016-01-15');
+INSERT INTO item_master VALUES ('I3', 'Pizza', 'Fastfood', 350, 'Average', '2015-02-20');
+INSERT INTO item_master VALUES ('I4', 'Orangejuice', 'Juice', 50, 'Best', '2016-02-05');
+INSERT INTO item_master VALUES ('I5', 'Vanilla_cake', 'Bakery', 2000, 'Good', '2016-01-01');
+
+-- Required Queries
+UPDATE item_master SET QUALITY = 'Verygood' WHERE QUALITY = 'Good';
+DELETE FROM item_master WHERE PRICE = 50;
+-- 2. CUST_MASTER
+
+-- Table Creation
+CREATE TABLE Cust_master (
+    CUST_NO VARCHAR(10) PRIMARY KEY,
+    CUST_NAME VARCHAR(50),
+    ADDRESS1 VARCHAR(100),
+    CITY VARCHAR(50),
+    STATE VARCHAR(50),
+    PH_NO VARCHAR(15)
+);
+
+-- Insert Values
+INSERT INTO Cust_master VALUES ('C1', 'Priya', 'RingRoad', 'Ahmedabad', 'Gujarat', '8989678548');
+INSERT INTO Cust_master VALUES ('C2', 'Puja', 'Lajpat Nagar', 'Banaras', 'UP', '7898456213');
+INSERT INTO Cust_master VALUES ('C3', 'Ankit', 'Borivali', 'Mumbai', 'Maharashtra', '7898984251');
+INSERT INTO Cust_master VALUES ('C4', 'Ravi', 'VajdiRoad', 'Delhi', 'Delhi', '7898452034');
+INSERT INTO Cust_master VALUES ('C5', 'Alpa', 'Jamnagar Road', 'Ahmedabad', 'Gujarat', '7465241589');
+
+-- Required Queries
+UPDATE Cust_master SET ADDRESS1 = 'CG Road' WHERE CUST_NAME = 'Priya';
+DELETE FROM Cust_master WHERE PH_NO = '7898452034';
+
+
+
+-- 3. PERSON
+
+-- Table Creation
+CREATE TABLE Person (
+    PERSON_ID INT PRIMARY KEY,
+    FNAME VARCHAR(50),
+    LNAME VARCHAR(50),
+    CITY VARCHAR(50),
+    SALARY INT
+);
+
+-- Insert Values
+INSERT INTO Person VALUES (1, 'Sneha', 'Sheth', 'Rajkot', 10000);
+INSERT INTO Person VALUES (2, 'Puja', 'Parmar', 'Ahmedabad', 2000);
+INSERT INTO Person VALUES (3, 'Riya', 'Gajar', 'Pune', 8000);
+INSERT INTO Person VALUES (4, 'Sandip', 'Jadeja', 'Pune', 5000);
+INSERT INTO Person VALUES (5, 'Alpesh', 'Prajapati', 'Mumbai', 20000);
+
+-- Required Queries
+UPDATE Person SET CITY = 'Kolkata' WHERE FNAME = 'Sandip';
+SELECT * FROM Person WHERE SALARY > 6000;
+-- 4. BANK_BRANCH
+
+-- Table Creation
+CREATE TABLE Bank_Branch (
+    BRANCH_ID VARCHAR(10) PRIMARY KEY,
+    BRANCH_NAME VARCHAR(50),
+    BRANCH_ADDRESS VARCHAR(100),
+    BRANCH_CITY VARCHAR(50),
+    BRANCH_STATE VARCHAR(50),
+    BRANCH_OPEN_DATE DATE
+);
+
+-- Insert Values
+INSERT INTO Bank_Branch VALUES ('B001', 'BOI', 'JagnathRoad', 'Rajkot', 'Gujarat', '2015-03-22');
+INSERT INTO Bank_Branch VALUES ('B002', 'SBI', 'Borivali Road', 'Mumbai', 'Maharashtra', '2000-01-12');
+INSERT INTO Bank_Branch VALUES ('B003', 'HDFC', 'AgraRoad', 'Agra', 'U.P', '1998-02-04');
+INSERT INTO Bank_Branch VALUES ('B004', 'DenaBank', 'CGRoad', 'Ahmedabad', 'Gujarat', '2012-09-20');
+INSERT INTO Bank_Branch VALUES ('B005', 'ICICI', 'MajavdiRoad', 'Junagadh', 'Gujarat', '2011-05-07');
+
+-- Required Queries
+SELECT * FROM Bank_Branch ORDER BY BRANCH_NAME;
+SELECT BRANCH_NAME, BRANCH_ADDRESS, BRANCH_CITY FROM Bank_Branch;
+-- 5. AGGREGATE TABLES (DEPOSIT & CUSTOMERS)
+
+-- Table Creation
+CREATE TABLE DEPOSIT (
+    ACTNO INT PRIMARY KEY,
+    CNAME VARCHAR(50),
+    BNAME VARCHAR(50),
+    AMOUNT DECIMAL(10,2),
+    ADATE DATE
+);
+
+CREATE TABLE CUSTOMERS (
+    CNAME VARCHAR(50),
+    CITY VARCHAR(50)
+);
+
+-- Insert Values for DEPOSIT
+INSERT INTO DEPOSIT VALUES (100, 'ANIL', 'VRCE', 1000.00, '1995-03-01');
+INSERT INTO DEPOSIT VALUES (101, 'SUNIL', 'AJNI', 5000.00, '1996-01-04');
+INSERT INTO DEPOSIT VALUES (102, 'MEHUL', 'KAROLBAGH', 3500.00, '1995-11-17');
+INSERT INTO DEPOSIT VALUES (104, 'MADHURI', 'CHANDI', 1200.00, '1995-12-17');
+INSERT INTO DEPOSIT VALUES (105, 'PRMOD', 'M G ROAD', 3000.00, '1996-03-27');
+INSERT INTO DEPOSIT VALUES (106, 'SANDIP', 'ANDHERI', 2000.00, '1996-03-31');
+INSERT INTO DEPOSIT VALUES (107, 'SHIVANI', 'VIRAR', 1000.00, '1995-09-05');
+INSERT INTO DEPOSIT VALUES (108, 'KRANTI', 'NEHRU PLACE', 5000.00, '1995-07-02');
+INSERT INTO DEPOSIT VALUES (109, 'MINU', 'POWAI', 7000.00, '1995-08-10');
+
+-- Insert Values for CUSTOMERS
+INSERT INTO CUSTOMERS VALUES ('ANIL', 'CALCUTTA'), ('SUNIL', 'DELHI'), ('MEHUL', 'BARODA'), 
+('MANDAR', 'PATNA'), ('MADHURI', 'NAGPUR'), ('PRAMOD', 'NAGPUR'), ('SANDIP', 'SURAT'), 
+('SHIVANI', 'BOMBAY'), ('KRANTI', 'BOMBAY'), ('NAREN', 'BOMBAY');
+
+-- Aggregate Queries
+SELECT SUM(AMOUNT) AS Total_Deposit FROM DEPOSIT;
+SELECT COUNT(*) AS Total_Customers FROM CUSTOMERS;
+-- DATA TABLES SUMMARY (FOR REFERENCE)
+--- ITEM_MASTER: [I1, Dairymilk, 500], [I2, Kajukatli, 1000], [I3, Pizza, 350], [I4, Orangejuice, 50], [I5, Vanilla_cake, 2000]
+-- CUST_MASTER: [C1, Priya], [C2, Puja], [C3, Ankit], [C4, Ravi], [C5, Alpa]
+-- PERSON: [1, Sneha, 10000], [2, Puja, 2000], [3, Riya, 8000], [4, Sandip, 5000], [5, Alpesh, 20000]
+-- BANK_BRANCH: [B001, BOI], [B002, SBI], [B003, HDFC], [B004, DenaBank], [B005, ICICI]
+-- CUSTOMERS: [ANIL, SUNIL, MEHUL, MANDAR, MADHURI, PRAMOD, SANDIP, SHIVANI, KRANTI, NAREN]
+
+1. Table: item_master
+
+ID NAME TYPE PRICE QUALITY ITEM_PACK_DATE
+I1 Dairymilk Chocolate 500 Good 12-AUG-2000
+I2 Kajukatli Mithai 1000 Verygood 15-JAN-2016
+I3 Pizza Fastfood 350 Average 20-FEB-2015
+I4 Orangejuice Juice 50 Best 05-FEB-2016
+I5 Vanilla_cake Bakery 2000 Good 01-JAN-2016
+
+2. Table: Cust_master
+CUST_NO CUST_NAME ADDRESS1 CITY STATE PH_NO
+C1 Priya RingRoad Ahmedabad Gujarat 8989678548
+C2 Puja Lajpat Nagar Banaras UP 7898456213
+C3 Ankit Borivali Mumbai Maharashtra 7898984251
+C4 Ravi VajdiRoad Delhi Delhi 7898452034
+C5 Alpa Jamnagar Road Ahmedabad Gujarat 7465241589
+
+3. Table: Person
+PERSON_ID FNAME LNAME CITY SALARY
+1 Sneha Sheth Rajkot 10000
+2 Puja Parmar Ahmedabad 2000
+3 Riya Gajar Pune 8000
+4 Sandip Jadeja Pune 5000
+5 Alpesh Prajapati Mumbai 20000
+
+4. Table: Bank_Branch
+BRANCH_ID BRANCH_NAME BRANCH_ADDRESS BRANCH_CITY BRANCH_STATE BRANCH_OPEN_DATE
+B001 BOI JagnathRoad Rajkot Gujarat 22-MAR-2015
+B002 SBI Borivali Road Mumbai Maharashtra 12-JAN-2000
+B003 HDFC AgraRoad Agra U.P 04-FEB-1998
+B004 DenaBank CGRoad Ahmedabad Gujarat 20-SEP-2012
+B005 ICICI MajavdiRoad Junagadh Gujarat 07-MAY-2011
+
+5. Table: DEPOSIT
+ACTNO CNAME BNAME AMOUNT ADATE
+100 ANIL VRCE 1000.00 01-MAR-95
+101 SUNIL AJNI 5000.00 04-JAN-96
+102 MEHUL KAROLBAGH 3500.00 17-NOV-95
+104 MADHURI CHANDI 1200.00 17-DEC-95
+105 PRMOD M G ROAD 3000.00 27-MAR-96
+106 SANDIP ANDHERI 2000.00 31-MAR-96
+107 SHIVANI VIRAR 1000.00 05-SEP-95
+108 KRANTI NEHRU PLACE 5000.00 02-JUL-95
+109 MINU POWAI 7000.00 10-AUG-95
+
+6. Table: CUSTOMERS
+CNAME CITY
+ANIL CALCUTTA
+SUNIL DELHI
+MEHUL BARODA
+MANDAR PATNA
+MADHURI NAGPUR
+PRAMOD NAGPUR
+SANDIP SURAT
+SHIVANI BOMBAY
+KRANTI BOMBAY
+NAREN BOMBAY
+
+
+
+
+
+
+
+
